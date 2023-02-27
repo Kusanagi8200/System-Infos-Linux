@@ -78,4 +78,4 @@ echo #
 
 echo #
 echo -e "\033[43;30m ---> FIN DU SCRIPT <--- \033[0m"
-echo #
+echo # 
