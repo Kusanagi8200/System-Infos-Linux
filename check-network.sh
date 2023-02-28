@@ -6,9 +6,9 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-
 echo # 
-echo -e "\033[43;30mSCRIPT CHECK NETWORK - SYSTEME LINUX / Copyright (C) Elijah Kaminski/2023\033[0m"
+echo # 
+echo "\033[44;30m CHECK NETWORK / LINUX .......................................//\033[0m"
 
 if [ `whoami` != "root" ]
 then
@@ -16,66 +16,70 @@ then
         exit 1
 fi
 echo #
+echo #
 
 # LISTER LES INTERFACES RESEAUX
-echo -e "\033[43;30m ---> INTERFACES RESEAUX <--- \033[0m"
+echo "\033[43;30m INTERFACES RESEAUX ..........................................//\033[0m"
 lshw -class network |grep -Ev "(capabilities|configuration|resources|capacity|version|vendor|width|clock|bus info)"
 echo #
 echo #
 
 # LISTER CONFIG INTERFACES RESEAUX
-echo -e "\033[43;30m ---> CONFIG INTERFACES RESEAUX <--- \033[0m"
+echo "\033[43;30m CONFIG INTERFACES RESEAUX ...................................//\033[0m"
 ifconfig |grep -E "(*: |inet |ether|loop)"
 echo #
 echo #
 
 # DETERMINER GATEWAY
-echo -e "\033[43;30m ---> GATEWAY <--- \033[0m"
+echo "\033[43;30m GATEWAY .....................................................//\033[0m"
 ip route | grep default | cut -d" " -f3
 echo #
 echo #
 
 # DETERMINER SERVEUR DNS
-echo -e "\033[43;30m ---> SERVEUR DNS <--- \033[0m"
-grep "nameserver" /etc/resolv.conf |
+echo "\033[43;30m SERVEUR DNS .................................................//\033[0m"
+grep "nameserver" /etc/resolv.conf
 echo #
 echo #
 
 # PING DNS 
-echo -e "\033[43;30m ---> PING <--- \033[0m"
+echo "\033[43;30m PING ........................................................//\033[0m"
 ping 1.1.1.1 -c 5
 echo #
 echo #
 
 # ADRESSE IP PUBLIC
-echo -e "\033[43;30m ---> IP PUBLIC <--- \033[0m"
+echo "\033[43;30m IP PUBLIC ...................................................//\033[0m"
 dig +short myip.opendns.com @resolver1.opendns.com
 echo #
 echo #
 
 # INFOS SUR LE ROUTAGE
-echo -e "\033[43;30m --->  ROUTAGE <--- \033[0m"
+echo "\033[43;30m ROUTAGE .....................................................//\033[0m"
 netstat -grep
 echo #
 echo #
 
 # INFOS SUR LE ROUTAGE2
-echo -e "\033[43;30m --->  ACTIVES CONNECTIONS<--- \033[0m"
+echo "\033[43;30m ACTIVES CONNECTIONS .........................................//\033[0m"
 netstat -alpnet
 echo #
 echo #
 
 # TRACEROUTE CHECK
-echo -e "\033[43;30m --->  TRACEROUTE CHECK <--- \033[0m"
+echo "\033[43;30m TRACEROUTE CHECK ............................................//\033[0m"
 traceroute 1.1.1.1 --resolve-hostnames
 echo #
 echo #
 
 # TEST DEBIT CONNEXION
-echo -e "\033[43;30m --->  TEST DEBIT CONNEXION <--- \033[0m"
-curl --max-time 3 -4 -o /dev/null http://bouygues.testdebit.info/10G.iso
+echo "\033[43;30m TEST DEBIT CONNEXION ........................................//\033[0m"
+curl --max-time 2 -4 -o /dev/null http://bouygues.testdebit.info/10G.iso
 echo #
 
 echo #
-echo -e "\033[43;30m ---> FIN DU SCRIPT <--- \033[0m"
-echo # 
+echo "\033[5;44;30m FIN DU CHECK NETWORK ........................................//\033[0m"
+echo #
+echo #
+echo #
+echo "\033[43;30m MENU CHECKS...........//\033[0m"

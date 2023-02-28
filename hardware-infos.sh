@@ -6,9 +6,9 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-
 echo # 
-echo -e "\033[43;30mSCRIPT CHECK HARDWARE - SYSTEME LINUX / Copyright (C) Elijah Kaminski/2023 \033[0m"
+echo # 
+echo "\033[44;30m CHECK HARDWARE / LINUX .....................................//\033[0m"
 
 if [ `whoami` != "root" ]
 then
@@ -18,52 +18,48 @@ fi
 echo #
 
 echo #
-echo -e "\033[43;30m ---> MACHINE <--- \033[0m"
-echo #
+echo "\033[43;30m MACHINE ....................................................//\033[0m"
 inxi -M
 echo #
 
 echo #
-echo -e "\033[43;30m ---> MEMOIRE <--- \033[0m"
-echo #
+echo "\033[43;30m MEMOIRE ....................................................//\033[0m"
 inxi -m
 echo #
 
 echo #
-echo -e "\033[43;30m ---> CPU <--- \033[0m"
-echo #
+echo "\033[43;30m CPU ........................................................//\033[0m"
 inxi -C
 echo #
 
 echo #
-echo -e "\033[43;30m ---> GRAPHICS <--- \033[0m"
-echo #
+echo "\033[43;30m GRAPHICS ...................................................//\033[0m"
 inxi -G
 echo #
 
 echo #
-echo -e "\033[43;30m ---> NETWORK <--- \033[0m"
-echo #
+echo "\033[43;30m NETWORK ....................................................//\033[0m"
 inxi -n
 echo #
 
 echo #
-echo -e "\033[43;30m ---> DRIVES <--- \033[0m"
-echo #
+echo "\033[43;30m DRIVES .....................................................//\033[0m"
 inxi -D
 echo #
 
 echo #
-echo -e "\033[43;30m ---> PARTITIONS <--- \033[0m"
-echo #
+echo "\033[43;30m PARTITIONS .................................................//\033[0m"
 inxi -p
 echo #
 
 echo #
-echo -e "\033[43;30m ---> FSTAB <--- \033[0m"
+echo "\033[43;30m FSTAB ......................................................//\033[0m"
 cat /etc/fstab
 echo # 
 
 echo #
-echo -e "\033[43;30m ---> FIN DU SCRIPT <--- \033[0m"
+echo "\033[5;44;30m FIN DU CHECK HARDWARE .....................................//\033[0m"
 echo #
+echo #
+echo #
+echo "\033[43;30m MENU CHECKS...........//\033[0m"
