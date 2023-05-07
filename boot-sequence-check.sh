@@ -17,6 +17,7 @@ then
         exit 1
 fi
 echo # 
+
 echo # 
 echo "\033[43;30m INFORMATIONS SYSTEME .......................................//\033[0m"
 cat /proc/version
@@ -31,12 +32,12 @@ systemd-analyze time
 echo # 
 
 echo #
-echo "\033[43;30m---> TEMPS DE DÉMARRAGE PAR UNITÉS ..........................//\033[0m"
+echo "\033[43;30m TEMPS DE DÉMARRAGE PAR UNITÉS ..........................//\033[0m"
 systemd-analyze critical-chain
 echo # 
 
 echo #
-echo "\033[43;30m UNITÉS NON DÉMARRÉES .......................................//\033[0m"
+echo "\033[43;30m UNITÉS NON DÉMARRÉES AU BOOT .......................................//\033[0m"
 systemctl --failed 
 echo #
 
@@ -46,8 +47,18 @@ service --status-all |grep -Ev "-"
 echo #
 
 echo #
+echo "\033[43;30m LISTE DES UNITÉS DÉMARRÉES ................................//\033[0m"
+systemctl list-units --type=service --state=running | grep -v "\-.slice"
+echo #
+
+echo #
 echo "\033[43;30m LISTE DES SERVICES ETEINS ..................................//\033[0m"
 service --status-all |grep -E " - "
+echo #
+
+echo #
+echo "\033[43;30m LISTE DES UNITÉS ÉTEINTES ................................//\033[0m"
+systemctl list-units --type=service --state=inactive | grep -v "\-.slice"
 echo #
 
 echo #
@@ -58,6 +69,7 @@ echo #
 echo #
 echo "\033[5;44;30m FIN DU CHECK BOOT SEQUENCE .................................//\033[0m"
 echo #
+
 echo #
 echo #
 echo "\033[43;30m MENU CHECKS...........//\033[0m"
