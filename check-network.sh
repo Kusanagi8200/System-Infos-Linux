@@ -26,7 +26,21 @@ echo #
 
 # LISTER CONFIG INTERFACES RESEAUX
 echo "\033[43;30m CONFIG INTERFACES RESEAUX ...................................//\033[0m"
-ifconfig |grep -E "(*: |inet |ether|loop)"
+echo # 
+check_network_tools () {
+  if command -v ifconfig >/dev/null; then
+   echo "\033[41;37m IFCONFIG \033[0m"
+    ifconfig -a
+  elif command -v ip >/dev/null; then
+   echo "\033[41;37m RÉSULTAT DE IP -A \033[0m"
+    ip -a
+  else
+    echo "\033[41;37m ERREUR --> PAS D'OUTILS RÉSEAUX DISPONIBLES \033[0m"
+  fi
+}
+
+check_network_tools
+
 echo #
 echo #
 
@@ -38,7 +52,7 @@ echo #
 
 # DETERMINER SERVEUR DNS
 echo "\033[43;30m SERVEUR DNS .................................................//\033[0m"
-grep "nameserver" /etc/resolv.conf
+systemd-resolve --status |grep "DNS Server"
 echo #
 echo #
 
