@@ -19,6 +19,30 @@ fi
 echo # 
 
 echo # 
+echo "\033[43;30m VERIFICATION DE L'ÉTAT DU SYSTÈME .......................................//\033[0m"
+
+check_system_state()  {
+  state=$(systemctl is-system-running)
+  case $state in
+    "running")
+      echo "\033[1;32;40m SYSTEME EN COURS D'EXECUTION - FONCTIONNEMENT NORMAL \033[0m";;
+    "degraded")
+      echo "\033[41;97m SYSTEME EN COURS D'EXECUTION - CERTAINES RESSOURCES EN PANNE OU MAUVAIS FONCTIONNEMENT \033[0m";;
+    "maintenance")
+      echo "\033[41;97m SYSTEME EN COURS D'EXECUTION - MODE MAINTENANCE - FONCTIONNEMENT DEGRADÉ  \033[0m";;
+    "starting")
+      echo "\033[48;5;208m\033[38;5;15m SYSTEME EN COURS DE DEMARRAGE - PAS ENCORE COMPLETEMENT FONCTIONNEL \033[0m";;
+    "stopping")
+      echo "\033[48;5;208m\033[38;5;15m SYSTEME EN COURS D'ARRET - CERTAINES TÂCHES EN COURS D'EXECUTION \033[0m";;
+    "*")
+      echo "\033[1m;43;30m IMPOSSIBLE DE DETERMINER L'ÉTAT DU SYSTEME \033[0m";;
+  esac
+}
+check_system_state
+
+echo #
+
+echo # 
 echo "\033[43;30m INFORMATIONS SYSTEME .......................................//\033[0m"
 cat /proc/version
 echo #
