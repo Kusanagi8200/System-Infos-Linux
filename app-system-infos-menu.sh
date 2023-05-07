@@ -9,7 +9,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 echo # 
-echo -e "\033[43;30m INFOS SYSTEME LINUX / Copyright (C) Kusanagi8200/2023 \033[0m"
+echo -e "\033[43;30m APP - SYSTEM INFOS - LINUX / Copyright (C) Kusanagi8200/2023 \033[0m"
 
 if [ `whoami` != "root" ]
 then
@@ -51,7 +51,7 @@ $(ColorGreen ' 3 --> ') $(ColorGreen 'NETWORK........//')
 
 $(ColorGreen ' 4 --> ') $(ColorGreen 'SYSTEM.........//')
 
-$(ColorRed ' 0 --> ') $(ColorRed 'EXIT...........//') 
+$(ColorRed   ' 0 --> ') $(ColorRed 'EXIT...........//') 
 
 $(ColorGreen 'CHECK OPTION ?') "
         read a
